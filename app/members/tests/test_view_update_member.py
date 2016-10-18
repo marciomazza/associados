@@ -15,19 +15,19 @@ class MemberChangeView(TestCase):
         self.dom = lhtml.fromstring(self.response.content)
 
         self.data = {
-            u'category': u'1',
-            u'location': u'editou',
-            u'organization': u'editou',
-            u'relation_with_community': u'editou',
-            u'phone': u'12-1212-1212',
-            u'cpf': u'71763224490',
-            u'state': u'editou',
-            u'address': u'address',
-            u'partner': u'',
-            u'mailing': u'',
-            u'email': u'john@doe.com',
-            u'first_name': u'editou',
-            u'last_name': u'editou',
+            'category': '1',
+            'location': 'editou',
+            'organization': 'editou',
+            'relation_with_community': 'editou',
+            'phone': '12-1212-1212',
+            'cpf': '71763224490',
+            'state': 'editou',
+            'address': 'address',
+            'partner': '',
+            'mailing': '',
+            'email': 'john@doe.com',
+            'first_name': 'editou',
+            'last_name': 'editou',
         }
 
     def test_should_have_a_route(self):
@@ -75,18 +75,18 @@ class MemberChangeView(TestCase):
         self.assertEqual(member.category, Category.objects.get(id=1))
         self.assertEqual(member.location, 'editou')
         self.assertEqual(member.organization, Organization.objects.get(name='editou'))
-        self.assertEqual(member.relation_with_community, u'editou')
-        self.assertEqual(member.phone, u'12-1212-1212')
-        self.assertEqual(member.cpf, u'71763224490')
-        self.assertEqual(member.address, u'address')
+        self.assertEqual(member.relation_with_community, 'editou')
+        self.assertEqual(member.phone, '12-1212-1212')
+        self.assertEqual(member.cpf, '71763224490')
+        self.assertEqual(member.address, 'address')
         self.assertEqual(member.partner, False)
         self.assertEqual(member.mailing, False)
-        self.assertEqual(member.user.email, u'john@doe.com')
-        self.assertEqual(member.user.first_name, u'editou')
-        self.assertEqual(member.user.last_name, u'editou')
+        self.assertEqual(member.user.email, 'john@doe.com')
+        self.assertEqual(member.user.first_name, 'editou')
+        self.assertEqual(member.user.last_name, 'editou')
 
     def test_post_with_nine_digits_phone_should_update_a_member(self):
-        phone_nine_digits = u'11-98765-4321'
+        phone_nine_digits = '11-98765-4321'
         self.data.update(phone=phone_nine_digits)
 
         response = self.client.post(self.url, self.data)
@@ -105,12 +105,12 @@ class MemberChangeWithErrorView(TestCase):
         self.dom = lhtml.fromstring(self.response.content)
 
         self.data = {
-            u'category': u'1',
-            u'partner': u'',
-            u'mailing': u'',
-            u'email': u'john@doe.com',
-            u'first_name': u'editou',
-            u'last_name': u'editou',
+            'category': '1',
+            'partner': '',
+            'mailing': '',
+            'email': 'john@doe.com',
+            'first_name': 'editou',
+            'last_name': 'editou',
         }
 
     def test_post_with_correcly_data_should_update_a_member(self):

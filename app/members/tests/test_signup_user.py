@@ -8,15 +8,15 @@ class MemberSignupView(TestCase):
         self.url = reverse('members-signup')
 
         self.empty_data = {
-            u'email': u'',
-            u'password1': u'',
-            u'password2': u'',
+            'email': '',
+            'password1': '',
+            'password2': '',
         }
 
         self.data = {
-            u'email': u'fake_user@fake.com',
-            u'password1': u'fake_pass',
-            u'password2': u'fake_pass',
+            'email': 'fake_user@fake.com',
+            'password1': 'fake_pass',
+            'password2': 'fake_pass',
         }
 
     def test_should_have_a_route(self):
@@ -29,7 +29,7 @@ class MemberSignupView(TestCase):
 
     def test_post_with_blank_fields_should_return_error(self):
         self.response = self.client.post(self.url, data=self.empty_data)
-        self.assertContains(self.response, _(u'This field is required.'), count=3)
+        self.assertContains(self.response, _('This field is required.'), count=3)
 
     def test_post_with_correcly_data_should_redirect_to_dashboard(self):
         self.response = self.client.post(self.url, data=self.data)

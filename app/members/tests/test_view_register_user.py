@@ -13,15 +13,15 @@ class UserRegisterView(TestCase):
         self.url = reverse('members-signup')
 
         self.empty_data = {
-            u'email': u'',
-            u'password1': u'',
-            u'password2': u'',
+            'email': '',
+            'password1': '',
+            'password2': '',
         }
 
         self.user_data = {
-            u'email': u'member@mail.com',
-            u'password1': u'password1',
-            u'password2': u'password1',
+            'email': 'member@mail.com',
+            'password1': 'password1',
+            'password2': 'password1',
         }
 
     def test_should_have_a_route(self):
@@ -34,9 +34,9 @@ class UserRegisterView(TestCase):
 
     def test_post_with_blank_fields_should_return_error(self):
         response = self.client.post(self.url, {'email': '', 'password1': '', 'password2': ''})
-        self.assertFormError(response, 'form', 'email', _(u'This field is required.'))
-        self.assertFormError(response, 'form', 'password1', _(u'This field is required.'))
-        self.assertFormError(response, 'form', 'password2', _(u'This field is required.'))
+        self.assertFormError(response, 'form', 'email', _('This field is required.'))
+        self.assertFormError(response, 'form', 'password1', _('This field is required.'))
+        self.assertFormError(response, 'form', 'password2', _('This field is required.'))
 
     def test_post_with_correcly_data_should_create_a_user(self):
         self.response = self.client.post(self.url, data=self.user_data)

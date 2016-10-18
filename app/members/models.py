@@ -36,7 +36,7 @@ class City(DefaultFields):
         verbose_name_plural = _('Cities')
 
     def __unicode__(self):
-        return u"{0} - {1}".format(self.name, self.state)
+        return "{0} - {1}".format(self.name, self.state)
 
 
 class Category(models.Model):
@@ -65,7 +65,7 @@ class Member(models.Model):
     diretoria = models.NullBooleanField('Diretoria', default=False, null=True)
     thumb_image = models.CharField('Thumbimage', max_length=100, null=True, blank=True)
     municipio = models.ForeignKey('municipios.Municipio',
-                                  verbose_name=u"Município",
+                                  verbose_name="Município",
                                   related_name="municipio_org_mun",
                                   null=True, blank=True)
 

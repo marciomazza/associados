@@ -8,13 +8,13 @@ from app.members.models import Member, Category
 
 
 TRANSACTION_STATUS = (
-    ('1', u'Awaiting Payment'),
-    ('2', u'In analysis'),
-    ('3', u'Paid'),
-    ('4', u'Available'),
-    ('5', u'In dispute'),
-    ('6', u'Returned'),
-    ('7', u'Cancelled'),
+    ('1', 'Awaiting Payment'),
+    ('2', 'In analysis'),
+    ('3', 'Paid'),
+    ('4', 'Available'),
+    ('5', 'In dispute'),
+    ('6', 'Returned'),
+    ('7', 'Cancelled'),
 )
 
 
@@ -24,7 +24,7 @@ class PaymentType(models.Model):
     duration = models.IntegerField(help_text='In days', default=1)
 
     def __unicode__(self):
-        return u"{0} - {1} for {2} days".format(self.category.name, self.price, self.duration)
+        return "{0} - {1} for {2} days".format(self.category.name, self.price, self.duration)
 
 
 class Payment(models.Model):
@@ -39,7 +39,7 @@ class Payment(models.Model):
         return self.transaction_set.filter(status__in=[3, 4]).exists()
 
     def __unicode__(self):
-        return u'payment from {0}'.format(self.member)
+        return 'payment from {0}'.format(self.member)
 
 
 class Transaction(models.Model):
@@ -54,10 +54,10 @@ class Transaction(models.Model):
 
     @property
     def status_display(self):
-        return dict(TRANSACTION_STATUS).get(self.status, u"Unknown")
+        return dict(TRANSACTION_STATUS).get(self.status, "Unknown")
 
     def __unicode__(self):
-        return u"{self.date} - {self.status_display} - {self.price:.2f}".format(self=self)
+        return "{self.date} - {self.status_display} - {self.price:.2f}".format(self=self)
 
 
 def update_payment_transaction(sender, instance, **kwargs):

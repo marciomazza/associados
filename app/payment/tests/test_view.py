@@ -221,8 +221,8 @@ class NotificationViewTestCase(MemberTestCase):
 
         #get the created member
         #set the strings to be verified
-        body = u'Olá %s! Seu registro na Associação Python Brasil (APyB) já foi realizado!' % self.member.user.get_full_name()
-        subject = u'Registro OK'
+        body = 'Olá %s! Seu registro na Associação Python Brasil (APyB) já foi realizado!' % self.member.user.get_full_name()
+        subject = 'Registro OK'
 
         #verify the outbox length
         self.assertEqual(len(mail.outbox), 1)

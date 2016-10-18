@@ -127,7 +127,7 @@ class ValidMemberFormTest(MemberFormTest):
         self.assertFalse(self.member_instance.get_payment_status())
         self.assertFalse(member_form.is_valid())
 
-        self.assertEqual(member_form.errors['category'], [u"You can't change your category with pending payments"])
+        self.assertEqual(member_form.errors['category'], ["You can't change your category with pending payments"])
 
     def test_should_store_relation_with_community(self):
         self.assertEqual(self.member_instance.relation_with_community, self.data.get('relation_with_community'))

@@ -28,7 +28,7 @@ class PaymentView(View):
         payload = settings.PAGSEGURO
         price = payment.type.price
         payload["itemAmount1"] = "%.2f" % price
-        payload['itemDescription1'] = ugettext(u'Brazilian Python Association registration payment')
+        payload['itemDescription1'] = ugettext('Brazilian Python Association registration payment')
         payload["reference"] = "%d" % payment.pk
         return payload, price
 
@@ -93,7 +93,7 @@ class NotificationView(View):
             try:
                 referencia = int(referencia)
             except ValueError:
-                logger.error(u"Incorrect reference: {}".format(referencia))
+                logger.error("Incorrect reference: {}".format(referencia))
 
             valor = float(dom.xpath("//grossamount")[0].text)
             return status_transacao, referencia, valor
@@ -113,8 +113,8 @@ class NotificationView(View):
     def _send_confirmation_email(self, payment):
         #Send an email confirming the subscription
         user = payment.member.user
-        message = u'Olá %s! Seu registro na Associação Python Brasil (APyB) já foi realizado!' % user.get_full_name()
-        user.email_user(u'Registro OK', message)
+        message = 'Olá %s! Seu registro na Associação Python Brasil (APyB) já foi realizado!' % user.get_full_name()
+        user.email_user('Registro OK', message)
 
     def transaction_done(self, payment_id):
         payment = Payment.objects.get(id=payment_id)

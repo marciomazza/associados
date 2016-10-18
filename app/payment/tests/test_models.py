@@ -27,7 +27,7 @@ class PaymentTypeTestCase(TestCase):
             price = 34.34,
             duration = 20
         )
-        self.assertEqual(unicode(self.payment_type), 'Efetivo - 34.34 for 20 days')
+        self.assertEqual(str(self.payment_type), 'Efetivo - 34.34 for 20 days')
 
 
 class PaymentModelTestCase(MemberTestCase):
@@ -50,7 +50,7 @@ class PaymentModelTestCase(MemberTestCase):
             date=timezone.now(),
             valid_until=timezone.now() + timedelta(days=10, minutes=1)
         )
-        self.assertEqual(unicode(self.payment), 'payment from Logan')
+        self.assertEqual(str(self.payment), 'payment from Logan')
 
     def test_should_have_member(self):
         self.assert_field_in('member', Payment)
