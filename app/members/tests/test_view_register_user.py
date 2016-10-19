@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from django.contrib.auth.models import User, UserManager
 from django.core.urlresolvers import reverse, NoReverseMatch
 from django.test import TestCase

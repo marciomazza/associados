@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# encoding: utf-8
 
 # """
 # From https://github.com/django/django-localflavor/blob/master/localflavor/br/forms.py
