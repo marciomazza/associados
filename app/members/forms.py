@@ -16,7 +16,7 @@ from .models import Organization, Member, Category
 
 class OrganizationInput(TextInput):
     def _format_value(self, value):
-        if type(value) is not int:
+        if not isinstance(value, int):
             return value
         try:
             organization = Organization.objects.get(id=value)

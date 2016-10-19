@@ -141,7 +141,7 @@ def member_status(request):
     params = _retrieve_parameters(request, valid_parameters)
 
     if params == {}:
-        error_message = 'Could not find any valid parameters. Options: %s' % valid_parameters.keys()
+        error_message = 'Could not find any valid parameters. Options: %s' % list(valid_parameters.keys())
         response = {'error': error_message}
     else:
         response = _search_member(params)

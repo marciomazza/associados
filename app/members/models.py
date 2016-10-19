@@ -129,7 +129,7 @@ class Member(models.Model):
             else:
                 self.thumb_image = get_gravatar_url(self.user.email, size=150)
             self.save()
-        except Exception, e:
+        except Exception as e:
             raise e
         return self.thumb_image
 
